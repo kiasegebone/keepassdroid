@@ -182,8 +182,7 @@ public final class PRNGFixes {
         // SecureRandom.getInstance("SHA1PRNG") return a SecureRandom backed
         // by the Linux PRNG-based SecureRandom implementation.
         SecureRandom rng1 = new SecureRandom();
-        if (!LinuxPRNGSecureRandomProvider.class.equals(
-                rng1.getProvider().getClass())) {
+        if (LinuxPRNGSecureRandomProvider.class != rng1.getProvider().getClass()) {
             throw new SecurityException(
                     "new SecureRandom() backed by wrong Provider: "
                             + rng1.getProvider().getClass());
