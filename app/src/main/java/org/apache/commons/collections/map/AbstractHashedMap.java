@@ -299,7 +299,7 @@ public class AbstractHashedMap extends AbstractMap implements IterableMap {
         if (mapSize == 0) {
             return;
         }
-        int newSize = (int) ((size + mapSize) / loadFactor + 1);
+        int newSize = (int) (((loadFactor != 0) ? ((size + mapSize) / loadFactor) : 0) + 1);
         ensureCapacity(calculateNewCapacity(newSize));
         for (Iterator it = map.entrySet().iterator(); it.hasNext();) {
             Map.Entry entry = (Map.Entry) it.next();
